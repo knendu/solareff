@@ -1,0 +1,414 @@
+. br
+
+. simarwilson ( GenerationMU CUF = PotentialinMW ) CapacityRooftopMW CapacityGroundMW , algo(2) rts(v) base
+>  (o) reps(2000) bcreps (1000) tebc(tebc_vrs_01) te(te_vrs_01) biaste(biaste_vrs_o1) invert logscore, if G
+> enerationMU != 0
+warning: bias-correction yields at least one negative score; consider dropping opt. invert or
+  switching to base(input)
+
+Simar & Wilson (2007) eff. analysis      Number of obs             =        22
+(algorithm #2)                           Number of efficient DMUs  =         0
+                                         Number of bootstr. reps   =      2000
+                                         Wald chi2(2)              =      6.08
+inefficient if ln(tebc_vrs_01) < 0       Prob > chi2(2)            =    0.0478
+
+------------------------------------------------------------------------------
+Data Envelopment Analysis:               Number of DMUs            =        26
+                                         Number of ref. DMUs       =        26
+output oriented (Shephard)               Number of outputs         =         2
+variable returns to scale                Number of inputs          =         1
+bias corrected efficiency measure        Number of reps (bc)       =      1000
+
+------------------------------------------------------------------------------
+             |  Observed   Bootstrap                           Percentile
+  efficiency |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+ln(tebc_~01) |
+CapacityRo~W |  -.0008225   .0007806    -1.05   0.292    -.0023463    .0007188
+CapacityGr~W |   .0007052   .0002983     2.36   0.018     .0003122    .0014534
+       _cons |  -1.807141   .2435857    -7.42   0.000    -2.255797   -1.290481
+-------------+----------------------------------------------------------------
+      /sigma |   .7863782   .1704551     4.61   0.000     .4605513    1.115993
+------------------------------------------------------------------------------
+
+. simarwilson ( GenerationMU CUF = PotentialinMW ) CapacityRooftopMW CapacityGroundMW , algo(2) rts(v) base
+>  (o) reps(2000) bcreps (1000) trnoisily, if GenerationMU != 0
+(5 obs truncated)
+
+Fitting full model:
+
+Iteration 0:   log pseudolikelihood = -52.300138  
+Iteration 1:   log pseudolikelihood = -46.720962  
+Iteration 2:   log pseudolikelihood =  -40.31879  (not concave)
+Iteration 3:   log pseudolikelihood = -38.669548  (not concave)
+Iteration 4:   log pseudolikelihood = -38.598659  
+Iteration 5:   log pseudolikelihood = -38.054093  
+Iteration 6:   log pseudolikelihood = -37.833301  
+Iteration 7:   log pseudolikelihood =  -37.82805  
+Iteration 8:   log pseudolikelihood = -37.824848  (not concave)
+Iteration 9:   log pseudolikelihood = -37.824211  
+Iteration 10:  log pseudolikelihood = -37.824079  (backed up)
+Iteration 11:  log pseudolikelihood = -37.824044  (backed up)
+Iteration 12:  log pseudolikelihood = -37.824018  (not concave)
+Iteration 13:  log pseudolikelihood = -37.824012  
+cannot compute an improvement -- discontinuous region encountered
+convergence not achieved in truncated regression
+r(430);
+
+. simarwilson ( GenerationMU CUF = CapacityMW ) Solar Temp Humid , algo(2) rts(v) base (o) reps(2000) bcrep
+> s (1000) trnoisily, if GenerationMU != 0
+(6 obs truncated)
+
+Fitting full model:
+
+Iteration 0:   log pseudolikelihood = -39.771961  
+Iteration 1:   log pseudolikelihood = -34.246726  
+Iteration 2:   log pseudolikelihood = -26.898882  
+Iteration 3:   log pseudolikelihood = -26.076337  
+Iteration 4:   log pseudolikelihood = -25.678128  
+Iteration 5:   log pseudolikelihood =  -25.42457  
+Iteration 6:   log pseudolikelihood = -25.399405  
+Iteration 7:   log pseudolikelihood = -25.398193  
+Iteration 8:   log pseudolikelihood = -25.398184  
+Iteration 9:   log pseudolikelihood = -25.398184  
+
+Truncated regression
+Limit: Lower =    1                             Number of obs     =         20
+       Upper = +inf                             Wald chi2(3)      =       4.93
+Log pseudolikelihood = -25.398184               Prob > chi2       =     0.1769
+
+------------------------------------------------------------------------------
+             |               Robust
+    __000009 | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       Solar |  -92.83932   59.09117    -1.57   0.116    -208.6559    22.97724
+        Temp |  -3.589983   2.612725    -1.37   0.169     -8.71083    1.530865
+       Humid |  -.6227124   .7643115    -0.81   0.415    -2.120735    .8753105
+       _cons |   549.6403   362.7176     1.52   0.130    -161.2731    1260.554
+-------------+----------------------------------------------------------------
+      /sigma |   6.047583   2.411994     2.51   0.012     1.320161      10.775
+------------------------------------------------------------------------------
+(0 obs truncated)
+
+Fitting full model:
+
+Iteration 0:   log pseudolikelihood = -59.344725  
+Iteration 1:   log pseudolikelihood = -52.577278  
+Iteration 2:   log pseudolikelihood = -46.289605  
+Iteration 3:   log pseudolikelihood = -43.714334  
+Iteration 4:   log pseudolikelihood = -43.512476  
+Iteration 5:   log pseudolikelihood = -43.346729  
+Iteration 6:   log pseudolikelihood =  -43.15602  
+Iteration 7:   log pseudolikelihood = -43.111273  
+Iteration 8:   log pseudolikelihood = -43.107893  
+Iteration 9:   log pseudolikelihood = -43.107264  (not concave)
+Iteration 10:  log pseudolikelihood = -43.106597  
+Iteration 11:  log pseudolikelihood = -43.105808  
+Iteration 12:  log pseudolikelihood = -43.105739  (backed up)
+cannot compute an improvement -- discontinuous region encountered
+convergence not achieved in truncated regression
+r(430);
+
+. br
+
+. help simarwilson
+
+. simarwilson ( GenerationMU CUF = CapacityMW ) Solar Temp Humid , algo(2) rts(v) base (o) reps(1000) bcrep
+> s (500) trnoisily, if GenerationMU != 0
+(6 obs truncated)
+
+Fitting full model:
+
+Iteration 0:   log pseudolikelihood = -39.771961  
+Iteration 1:   log pseudolikelihood = -34.246726  
+Iteration 2:   log pseudolikelihood = -26.898882  
+Iteration 3:   log pseudolikelihood = -26.076337  
+Iteration 4:   log pseudolikelihood = -25.678128  
+Iteration 5:   log pseudolikelihood =  -25.42457  
+Iteration 6:   log pseudolikelihood = -25.399405  
+Iteration 7:   log pseudolikelihood = -25.398193  
+Iteration 8:   log pseudolikelihood = -25.398184  
+Iteration 9:   log pseudolikelihood = -25.398184  
+
+Truncated regression
+Limit: Lower =    1                             Number of obs     =         20
+       Upper = +inf                             Wald chi2(3)      =       4.93
+Log pseudolikelihood = -25.398184               Prob > chi2       =     0.1769
+
+------------------------------------------------------------------------------
+             |               Robust
+    __000009 | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       Solar |  -92.83932   59.09117    -1.57   0.116    -208.6559    22.97724
+        Temp |  -3.589983   2.612725    -1.37   0.169     -8.71083    1.530865
+       Humid |  -.6227124   .7643115    -0.81   0.415    -2.120735    .8753105
+       _cons |   549.6403   362.7176     1.52   0.130    -161.2731    1260.554
+-------------+----------------------------------------------------------------
+      /sigma |   6.047583   2.411994     2.51   0.012     1.320161      10.775
+------------------------------------------------------------------------------
+(0 obs truncated)
+
+Fitting full model:
+
+Iteration 0:   log pseudolikelihood = -59.526589  
+Iteration 1:   log pseudolikelihood = -52.733551  
+Iteration 2:   log pseudolikelihood = -46.431762  
+Iteration 3:   log pseudolikelihood = -43.853041  
+Iteration 4:   log pseudolikelihood = -43.590336  
+Iteration 5:   log pseudolikelihood = -43.416433  
+Iteration 6:   log pseudolikelihood = -43.329952  
+Iteration 7:   log pseudolikelihood = -43.303508  
+Iteration 8:   log pseudolikelihood = -43.251221  
+Iteration 9:   log pseudolikelihood = -43.247943  
+Iteration 10:  log pseudolikelihood = -43.217085  
+Iteration 11:  log pseudolikelihood = -43.213088  
+Iteration 12:  log pseudolikelihood = -43.211487  
+Iteration 13:  log pseudolikelihood = -43.211292  (backed up)
+Iteration 14:  log pseudolikelihood = -43.211244  (backed up)
+cannot compute an improvement -- discontinuous region encountered
+convergence not achieved in truncated regression
+r(430);
+
+. simarwilson ( GenerationMU CUF = CapacityMW ) Solar Temp Humid , algo(1) rts(v) base (o) reps(1000) bcrep
+> s (500) trnoisily, if GenerationMU != 0
+warning: no bias-correction with alg. #1; bcreps(500) ignored
+(6 obs truncated)
+
+Fitting full model:
+
+Iteration 0:   log pseudolikelihood = -39.771961  
+Iteration 1:   log pseudolikelihood = -34.246726  
+Iteration 2:   log pseudolikelihood = -26.898882  
+Iteration 3:   log pseudolikelihood = -26.076337  
+Iteration 4:   log pseudolikelihood = -25.678128  
+Iteration 5:   log pseudolikelihood =  -25.42457  
+Iteration 6:   log pseudolikelihood = -25.399405  
+Iteration 7:   log pseudolikelihood = -25.398193  
+Iteration 8:   log pseudolikelihood = -25.398184  
+Iteration 9:   log pseudolikelihood = -25.398184  
+
+Truncated regression
+Limit: Lower =    1                             Number of obs     =         20
+       Upper = +inf                             Wald chi2(3)      =       4.93
+Log pseudolikelihood = -25.398184               Prob > chi2       =     0.1769
+
+------------------------------------------------------------------------------
+             |               Robust
+    __000009 | Coefficient  std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       Solar |  -92.83932   59.09117    -1.57   0.116    -208.6559    22.97724
+        Temp |  -3.589983   2.612725    -1.37   0.169     -8.71083    1.530865
+       Humid |  -.6227124   .7643115    -0.81   0.415    -2.120735    .8753105
+       _cons |   549.6403   362.7176     1.52   0.130    -161.2731    1260.554
+-------------+----------------------------------------------------------------
+      /sigma |   6.047583   2.411994     2.51   0.012     1.320161      10.775
+------------------------------------------------------------------------------
+
+Simar & Wilson (2007) eff. analysis      Number of obs             =        20
+(algorithm #1)                           Number of efficient DMUs  =         6
+                                         Number of bootstr. reps   =      1000
+                                         Wald chi2(3)              =      2.33
+inefficient if score > 1                 Prob > chi2(3)            =    0.5065
+
+------------------------------------------------------------------------------
+Data Envelopment Analysis:               Number of DMUs            =        26
+output oriented (Farrell)                Number of ref. DMUs       =        26
+variable returns to scale                Number of outputs         =         2
+no bias correction                       Number of inputs          =         1
+
+------------------------------------------------------------------------------
+             |  Observed   Bootstrap                           Percentile
+inefficiency |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+score        |
+       Solar |  -92.83932   67.21169    -1.38   0.167    -263.4022   -6.177852
+        Temp |  -3.589983   2.499169    -1.44   0.151    -9.679468   -.0119718
+       Humid |  -.6227124   .8022239    -0.78   0.438    -2.729437     .221255
+       _cons |   549.6403   397.1633     1.38   0.166      38.3555    1534.387
+-------------+----------------------------------------------------------------
+      /sigma |   6.047583   2.324688     2.60   0.009     1.237905    9.881403
+------------------------------------------------------------------------------
+
+. simarwilson ( GenerationMU CUF = CapacityMW ) Solar Temp Humid , algo(2) rts(v) base (o) reps(2000) bcrep
+> s (1000) tebc(tebc_vrs_01) te(te_vrs_01) biaste(biaste_vrs_o1) invert, if GenerationMU != 0
+warning: bias-correction yields at least one negative score; consider dropping opt. invert or
+  switching to base(input)
+
+Simar & Wilson (2007) eff. analysis      Number of obs             =        24
+(algorithm #2)                           Number of efficient DMUs  =         0
+                                         Number of bootstr. reps   =      2000
+inefficient if tebc_vrs_01 < 1           Wald chi2(3)              =     16.31
+twosided truncation                      Prob > chi2(3)            =    0.0010
+
+------------------------------------------------------------------------------
+Data Envelopment Analysis:               Number of DMUs            =        26
+                                         Number of ref. DMUs       =        26
+output oriented (Shephard)               Number of outputs         =         2
+variable returns to scale                Number of inputs          =         1
+bias corrected efficiency measure        Number of reps (bc)       =      1000
+
+------------------------------------------------------------------------------
+             |  Observed   Bootstrap                           Percentile
+  efficiency |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+tebc_vrs_01  |
+       Solar |   .5211605    .154631     3.37   0.001     .2454387    .8590284
+        Temp |   .0353663    .012561     2.82   0.005     .0138983    .0616653
+       Humid |  -.0001661   .0048559    -0.03   0.973    -.0102376    .0089328
+       _cons |  -3.116497   .9589505    -3.25   0.001    -5.104163    -1.35573
+-------------+----------------------------------------------------------------
+      /sigma |   .1692112    .031816     5.32   0.000     .1012387    .2262186
+------------------------------------------------------------------------------
+
+. br
+
+. simarwilson ( GenerationMU CUF = CapacityMW ) Solar Temp Humid , algo(2) rts(v) base (i) reps(2000) bcrep
+> s (1000) tebc(tebc_vrs_i1) te(te_vrs_i1) biaste(biaste_vrs_i1) invert, if GenerationMU != 0
+
+Simar & Wilson (2007) eff. analysis      Number of obs             =        26
+(algorithm #2)                           Number of efficient DMUs  =         0
+                                         Number of bootstr. reps   =      2000
+                                         Wald chi2(3)              =      3.23
+inefficient if tebc_vrs_i1 > 1           Prob > chi2(3)            =    0.3577
+
+------------------------------------------------------------------------------
+Data Envelopment Analysis:               Number of DMUs            =        26
+                                         Number of ref. DMUs       =        26
+input oriented (Shephard)                Number of outputs         =         2
+variable returns to scale                Number of inputs          =         1
+bias corrected efficiency measure        Number of reps (bc)       =      1000
+
+------------------------------------------------------------------------------
+             |  Observed   Bootstrap                           Percentile
+inefficiency |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+tebc_vrs_i1  |
+       Solar |  -19.90144   13.88118    -1.43   0.152    -35.84455    3.097846
+        Temp |  -2.238591   1.382366    -1.62   0.105    -3.526624    .5892019
+       Humid |   -1.47972   1.206086    -1.23   0.220    -3.744711    .0146629
+       _cons |   218.2045   138.7797     1.57   0.116    -2.338685    403.0873
+-------------+----------------------------------------------------------------
+      /sigma |   5.990801   2.152192     2.78   0.005     .9427694    8.520711
+------------------------------------------------------------------------------
+
+. br'
+' invalid name
+r(198);
+
+. br
+
+. help simarwilson
+
+. drop te_vrs_01 biaste_vrs_o1 tebc_vrs_01 te_vrs_i1 biaste_vrs_i1 tebc_vrs_i1
+
+. simarwilson ( GenerationMU CUF = CapacityMW ) Solar Temp Humid , algo(2) rts(v) base (o) reps(2000) bcrep
+> s (1000) tename(te_vrs_01) tebc(tebc_vrs_01) invert, if GenerationMU != 0
+warning: bias-correction yields at least one negative score; consider dropping opt. invert or
+  switching to base(input)
+
+Simar & Wilson (2007) eff. analysis      Number of obs             =        24
+(algorithm #2)                           Number of efficient DMUs  =         0
+                                         Number of bootstr. reps   =      2000
+inefficient if tebc_vrs_01 < 1           Wald chi2(3)              =     17.48
+twosided truncation                      Prob > chi2(3)            =    0.0006
+
+------------------------------------------------------------------------------
+Data Envelopment Analysis:               Number of DMUs            =        26
+                                         Number of ref. DMUs       =        26
+output oriented (Shephard)               Number of outputs         =         2
+variable returns to scale                Number of inputs          =         1
+bias corrected efficiency measure        Number of reps (bc)       =      1000
+
+------------------------------------------------------------------------------
+             |  Observed   Bootstrap                           Percentile
+  efficiency |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+tebc_vrs_01  |
+       Solar |    .526344   .1502699     3.50   0.000     .2637701    .8720835
+        Temp |   .0343645   .0121228     2.83   0.005      .014244    .0600387
+       Humid |  -.0003756   .0046075    -0.08   0.935     -.009797    .0080725
+       _cons |  -3.098577   .9063473    -3.42   0.001     -5.04266   -1.444727
+-------------+----------------------------------------------------------------
+      /sigma |   .1662155    .030417     5.46   0.000     .0978825    .2179232
+------------------------------------------------------------------------------
+
+. br
+
+. simarwilson ( GenerationMU CUF = CapacityMW ) Solar Temp Humid , algo(2) rts(v) base (o) reps(2000) bcrep
+> s (1000) tename(te_vrs_02) tebc(tebc_vrs_02), if GenerationMU != 0
+convergence not achieved in truncated regression
+r(430);
+
+. graph hbar (mean) tebc_vrs_01 , over( State), if tebc_vrs_01>0
+
+
+. help simarwilson
+
+. mean ( te_vrs_01)
+
+Mean estimation                             Number of obs = 26
+
+--------------------------------------------------------------
+             |       Mean   Std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+   te_vrs_01 |   .6099814   .0580996      .4903231    .7296397
+--------------------------------------------------------------
+
+. mean( tebc_vrs_01)
+
+Mean estimation                             Number of obs = 26
+
+--------------------------------------------------------------
+             |       Mean   Std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+ tebc_vrs_01 |  -2.702093   2.966047     -8.810782    3.406596
+--------------------------------------------------------------
+
+. mean( tebc_vrs_01), if tebc_vrs_01>0
+option if not allowed
+r(198);
+
+. mean( tebc_vrs_01) if tebc_vrs_01>0
+
+Mean estimation                             Number of obs = 24
+
+--------------------------------------------------------------
+             |       Mean   Std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+ tebc_vrs_01 |   .3365892   .0440278      .2455107    .4276676
+--------------------------------------------------------------
+
+. graph hbar (mean) te_vrs_01, over( State), if State!= "Manipur" & State!= "Arunachal Pradesh"
+
+. help simarwilson
+
+. simarwilson te_vrs_01 Solar Temp Humid , algo(1) rts(v) base (o) reps(2000) bcreps (1000) tename(te_vr
+> s_01_alg1) tebc(tebc_vrs_01_alg1) invert, if GenerationMU != 0
+warning: no bias-correction with alg. #1; bcreps(1000) tebc(tebc_vrs_01_alg1) ignored
+warning: external dea scores used; rts(v) base(o) tename(te_vrs_01_alg1) ignored
+warning: opt. invert has no effect with externally estimated scores; invert left-hand-side
+  variable manually to switch from Farrell to Shephard efficiency
+
+Simar & Wilson (2007) eff. analysis      Number of obs             =        20
+(algorithm #1)                           Number of efficient DMUs  =         6
+                                         Number of bootstr. reps   =      2000
+inefficient if te_vrs_01 < 1             Wald chi2(3)              =     13.84
+twosided truncation                      Prob > chi2(3)            =    0.0031
+
+------------------------------------------------------------------------------
+Data Envelopment Analysis:                         externally estimated scores
+
+------------------------------------------------------------------------------
+             |  Observed   Bootstrap                           Percentile
+  efficiency |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+te_vrs_01    |
+       Solar |   .5188344   .1587712     3.27   0.001     .2312399    .8507352
+        Temp |   .0274778   .0113719     2.42   0.016     .0120363    .0571822
+       Humid |   .0033338   .0050863     0.66   0.512    -.0067175    .0136796
+       _cons |  -2.933828   .9486701    -3.09   0.002    -4.957535   -1.340049
+-------------+----------------------------------------------------------------
+      /sigma |   .1657744   .0310519     5.34   0.000      .097401    .2168057
+------------------------------------------------------------------------------
+
+. br
